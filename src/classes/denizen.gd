@@ -7,11 +7,13 @@ class_name Denizen
 
 enum Mood {
 	NORMAL,
-	
+	DISTURBED
 }
+## Moods that a denizen can be under. Displayed on UI.
+# Add more as necessary
 
-var denizen_name
+var denizen_name : String
 ## The name of the denizen. Randomly generated
 var memory : Array = []
 ## Record of recent notable events the denizen was a witness to
-var status :
+var status : Mood
