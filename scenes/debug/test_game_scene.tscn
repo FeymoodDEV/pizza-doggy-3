@@ -1,13 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhly82jesq508"]
 
 [ext_resource type="PackedScene" uid="uid://drjg3dvrnqqve" path="res://src/core/game_scene.tscn" id="1_b6h4r"]
-[ext_resource type="Script" uid="uid://b3jelvm5mq866" path="res://src/classes/server.gd" id="2_prkhn"]
-[ext_resource type="Script" uid="uid://dad1phnueh2co" path="res://src/classes/denizen.gd" id="3_7x385"]
+[ext_resource type="Script" uid="uid://b3jelvm5mq866" path="res://src/servers/server.gd" id="2_prkhn"]
+[ext_resource type="Script" uid="uid://dad1phnueh2co" path="res://src/denizens/denizen.gd" id="3_7x385"]
 
 [node name="GameScene" instance=ExtResource("1_b6h4r")]
-
-[node name="GameLogic" parent="." index="0"]
-INITIAL_DRONE_COUNT = null
 
 [node name="Server1" type="Node" parent="GameLogic" index="0"]
 script = ExtResource("2_prkhn")

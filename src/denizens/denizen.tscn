@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://rccmoiibmewl"]
+
+[ext_resource type="Script" uid="uid://dad1phnueh2co" path="res://src/denizens/denizen.gd" id="1_udbnc"]
+[ext_resource type="Script" uid="uid://bvdo25t1503oi" path="res://src/denizens/base_den_controller.gd" id="2_oyv7y"]
+
+[node name="Denizen" type="Node"]
+script = ExtResource("1_udbnc")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
+[node name="BaseDenController" type="Node" parent="."]
+script = ExtResource("2_oyv7y")
