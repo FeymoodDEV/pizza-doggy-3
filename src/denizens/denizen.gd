@@ -5,10 +5,9 @@ class_name Denizen
 # I'm not sure what type to extend this from right now; I think it'll need to be serializable, so
 # I picked Node but Resource could probably work as well
 
-# 
+#
 
 signal attempting_move(server: Server)
-signal 
 
 enum Mood {
 	NORMAL,

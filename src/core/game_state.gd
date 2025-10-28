@@ -34,26 +34,27 @@ var resources : Dictionary[CraftingResource, int] = {
 
 func _ready() -> void:
 	drones = INITIAL_DRONE_COUNT
-	
+
 	# We need to:
 	# - Create initial servers. Keep track of em
 	# - Create initial denizens and parent them to those servers. Keep track of em
 	# - Connect relevant signals
 	# - and do whatever else might be relevant at the start of the game.
 	# Because we're just working with test objects, we can leave creating them for later.
-	
+
 	var children := get_children()
-	var servers : Array[Server] = children.filter(func (x): return x is Server)
+	# Amended to Node instead of Server
+	var servers : Array[Node] = children.filter(func (x): return x is Server)
 	var denizens : Array[Denizen] = []
 	for s in servers:
 		for i in s.get_children():
 			if i is Denizen:
 				denizens.append(i)
-		
-	
+
+
 
 func _process(delta: float) -> void:
 	pass
 
 # TODO: Drone task handling
-# 
+#

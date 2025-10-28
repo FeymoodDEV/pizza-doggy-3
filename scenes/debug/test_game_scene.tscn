@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhly82jesq508"]
+[gd_scene load_steps=5 format=3 uid="uid://bhly82jesq508"]
 
 [ext_resource type="PackedScene" uid="uid://drjg3dvrnqqve" path="res://src/core/game_scene.tscn" id="1_b6h4r"]
 [ext_resource type="Script" uid="uid://b3jelvm5mq866" path="res://src/servers/server.gd" id="2_prkhn"]
 [ext_resource type="Script" uid="uid://dad1phnueh2co" path="res://src/denizens/denizen.gd" id="3_7x385"]
+[ext_resource type="PackedScene" uid="uid://bfmluxs5nh1yf" path="res://scenes/debug/server_list.tscn" id="4_prkhn"]
 
 [node name="GameScene" instance=ExtResource("1_b6h4r")]
 
@@ -29,3 +30,27 @@ metadata/_custom_type_script = "uid://b3jelvm5mq866"
 [node name="Server3" type="Node" parent="GameLogic" index="2"]
 script = ExtResource("2_prkhn")
 metadata/_custom_type_script = "uid://b3jelvm5mq866"
+
+[node name="Control" type="Control" parent="CanvasLayer" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" index="0"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ServerList" parent="CanvasLayer/Control/MarginContainer" index="0" instance=ExtResource("4_prkhn")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+position = Vector2(575, 324)

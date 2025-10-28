@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfmluxs5nh1yf"]
+
+[ext_resource type="PackedScene" uid="uid://b2eyl08phhbtv" path="res://scenes/debug/server_occupants.tscn" id="1_jjfq3"]
+
+[node name="ServerList" type="GridContainer"]
+offset_right = 304.0
+offset_bottom = 570.0
+columns = 2
+
+[node name="ServerOccupants" parent="." instance=ExtResource("1_jjfq3")]
+layout_mode = 2
+
+[node name="ServerOccupants2" parent="." instance=ExtResource("1_jjfq3")]
+layout_mode = 2
+
+[node name="ServerOccupants3" parent="." instance=ExtResource("1_jjfq3")]
+layout_mode = 2
+
+[node name="ServerOccupants4" parent="." instance=ExtResource("1_jjfq3")]
+layout_mode = 2

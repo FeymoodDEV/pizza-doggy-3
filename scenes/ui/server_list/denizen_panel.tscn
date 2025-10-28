@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bn31td60v5vc2"]
+
+[node name="DenizenPanel" type="Panel"]
+custom_minimum_size = Vector2(250, 250)
+
+[node name="DenizenNames" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 100.0
+offset_bottom = 101.0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label" type="Label" parent="DenizenNames"]
+layout_mode = 2
+text = "Denizen Name"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="DenizenNames"]
+layout_mode = 2
+text = "Denizen Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="DenizenNames"]
+layout_mode = 2
+text = "Denizen Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="DenizenNames"]
+layout_mode = 2
+text = "Denizen Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="DenizenNames"]
+layout_mode = 2
+text = "Denizen Name"
+horizontal_alignment = 1
+vertical_alignment = 1
