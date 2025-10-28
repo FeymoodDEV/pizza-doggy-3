@@ -49,6 +49,9 @@ var memory : Array = []
 ## Record of recent notable events the denizen was a witness to
 var status : Mood
 
+func _ready() -> void:
+	SignalBus.purge_denizen.connect(on_purge_denizen_button_pressed)
+
 func generate_name():
 	randomize()
 	var rand_index = randi_range(0, name_list.size() - 1)
@@ -79,5 +82,10 @@ func describe_last_event() -> String:
 	else:
 		return memory[-1]
 
-func delete():
-	pass
+
+func on_purge_denizen_button_pressed(denizen):
+	delete(denizen)
+
+func delete(denizen):
+	if denizen == self:
+		queue_free()
