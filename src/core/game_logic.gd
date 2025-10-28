@@ -66,6 +66,9 @@ func _on_requesting_random_interaction(emitter: Denizen):
 	var available_denizens = server.get_children().filter(func(x): 
 		return x is Denizen and x != emitter and x.can_interact()
 		)
+	if available_denizens.size() <= 0: 
+		# "[x] is feeling lonely..."
+		return
 	var selected_denizen : Denizen = available_denizens.pick_random()
 	
 	selected_denizen.accept_interaction(emitter)
@@ -78,6 +81,7 @@ func _on_requesting_random_move(emitter: Denizen):
 	
 	if target_server.closed:
 		print("Server %s refused move request from %s due to being closed" % [target_server, emitter])
+		# "[x] is annoyed/feeling claustrophobic..."
 	else:
 		print("%s moving to %s" % [emitter.denizen_name, target_server.server_name])
 		emitter.reparent(target_server)
