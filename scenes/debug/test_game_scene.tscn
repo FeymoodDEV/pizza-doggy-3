@@ -27,9 +27,49 @@ metadata/_custom_type_script = "uid://dad1phnueh2co"
 script = ExtResource("2_prkhn")
 metadata/_custom_type_script = "uid://b3jelvm5mq866"
 
+[node name="DenizenA" type="Node" parent="GameLogic/Server2" index="0"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
+[node name="DenizenB" type="Node" parent="GameLogic/Server2" index="1"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
+[node name="DenizenC" type="Node" parent="GameLogic/Server2" index="2"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
 [node name="Server3" type="Node" parent="GameLogic" index="2"]
 script = ExtResource("2_prkhn")
 metadata/_custom_type_script = "uid://b3jelvm5mq866"
+
+[node name="DenizenA" type="Node" parent="GameLogic/Server3" index="0"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
+[node name="DenizenB" type="Node" parent="GameLogic/Server3" index="1"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
+[node name="DenizenC" type="Node" parent="GameLogic/Server3" index="2"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
+[node name="Server4" type="Node" parent="GameLogic" index="3"]
+script = ExtResource("2_prkhn")
+metadata/_custom_type_script = "uid://b3jelvm5mq866"
+
+[node name="DenizenA" type="Node" parent="GameLogic/Server4" index="0"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
+[node name="DenizenB" type="Node" parent="GameLogic/Server4" index="1"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
+
+[node name="DenizenC" type="Node" parent="GameLogic/Server4" index="2"]
+script = ExtResource("3_7x385")
+metadata/_custom_type_script = "uid://dad1phnueh2co"
 
 [node name="Control" type="Control" parent="CanvasLayer" index="0"]
 layout_mode = 3
@@ -44,9 +84,9 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_bottom = 10
 
 [node name="ServerList" parent="CanvasLayer/Control/MarginContainer" index="0" instance=ExtResource("4_prkhn")]
 unique_name_in_owner = true

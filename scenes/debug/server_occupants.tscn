@@ -1,22 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2eyl08phhbtv"]
+[gd_scene load_steps=3 format=3 uid="uid://b2eyl08phhbtv"]
 
+[ext_resource type="Script" uid="uid://brociqv2e1yoj" path="res://scenes/debug/server_occupants.gd" id="1_arnq1"]
 [ext_resource type="PackedScene" uid="uid://bn31td60v5vc2" path="res://scenes/ui/server_list/denizen_panel.tscn" id="1_ghqnn"]
 
 [node name="ServerOccupants" type="HBoxContainer"]
 theme_override_constants/separation = 4
 alignment = 1
+script = ExtResource("1_arnq1")
 
 [node name="ServerLabel" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 text = "Server"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="MaxOccupantsLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 text = "Max Occupants - 0/5"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DenizenPanel" parent="VBoxContainer" instance=ExtResource("1_ghqnn")]
 layout_mode = 2

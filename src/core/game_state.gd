@@ -31,9 +31,12 @@ var resources : Dictionary[CraftingResource, int] = {
 # and i don't really like magic strings
 
 
+var servers: Array[Node]
+var denizens: Array[Node]
+
 
 func _ready() -> void:
-	drones = INITIAL_DRONE_COUNT
+	##drones = INITIAL_DRONE_COUNT
 
 	# We need to:
 	# - Create initial servers. Keep track of em
@@ -44,8 +47,8 @@ func _ready() -> void:
 
 	var children := get_children()
 	# Amended to Node instead of Server
-	var servers : Array[Node] = children.filter(func (x): return x is Server)
-	var denizens : Array[Denizen] = []
+	servers = children.filter(func (x): return x is Server)
+	denizens = []
 	for s in servers:
 		for i in s.get_children():
 			if i is Denizen:

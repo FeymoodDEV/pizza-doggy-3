@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cge14ikwpr32v"]
+
+[ext_resource type="Script" uid="uid://u50ys8mc21vl" path="res://scenes/ui/server_list/denizen_name.gd" id="1_bpdut"]
+
+[node name="DenizenName" type="Label"]
+custom_minimum_size = Vector2(250, 30)
+offset_right = 40.0
+offset_bottom = 23.0
+text = "debug text display"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_bpdut")
