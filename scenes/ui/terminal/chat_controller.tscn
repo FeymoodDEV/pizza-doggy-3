@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfxaw6tw4vtwb"]
+
+[ext_resource type="Script" uid="uid://clvx62lgsaxnx" path="res://scenes/ui/terminal/chat_controller.gd" id="1_r82km"]
+
+[node name="ChatController" type="Node"]
+script = ExtResource("1_r82km")

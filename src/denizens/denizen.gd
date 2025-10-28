@@ -54,5 +54,30 @@ func generate_name():
 	var rand_index = randi_range(0, name_list.size() - 1)
 	denizen_name = name_list[rand_index]
 
+func start_chat_response() -> String:
+	match status:
+		Mood.NORMAL:
+			return "I am having a good time."
+		Mood.DISTURBED:
+			return "The voices are loud again. They won't stop."
+		_:
+			return "No data available."
+
+func describe_mood() -> String:
+	var mood: String
+	match status:
+		Mood.NORMAL:
+			mood = "Calm."
+		Mood.DISTURBED:
+			mood = "Unstable."
+		_: "Unknown."
+	return mood
+
+func describe_last_event() -> String:
+	if memory.is_empty():
+		return  "I do not recall anything recent."
+	else:
+		return memory[-1]
+
 func delete():
 	pass

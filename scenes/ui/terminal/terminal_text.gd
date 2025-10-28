@@ -1,21 +1,34 @@
-extends RichTextLabel
+extends Control
+class_name TerminalText
 
-@onready var typing_timer: Timer = $TypingTimer
+# Controls display of text and blinking cursor
+# See Chat Controller for overall text choices
+
+@onready var terminal_text_display: RichTextLabel = %TerminalTextDisplay
+@onready var terminal_input: LineEdit = %TerminalInput
+@onready var typing_timer: Timer = %TypingTimer
+
 
 var lines: Array[String] = []
 const MAX_LINES := 200
 const TYPING_SPEED := 0.02 # seconds per character
 
+var cursor_visible := true
+var blink_timer := 0.0
+const BLINK_SPEED := 0.5
+
 var bottom_line := 28
 
 func _ready() -> void:
-	clear()
+	add_to_group("terminal_text")
+
+	terminal_text_display.clear()
 	for line in bottom_line:
 		add_line("")
-	scroll_active = true
-	scroll_following = true
-	bbcode_enabled = true
-	scroll_to_line(-1)
+	terminal_text_display.scroll_active = true
+	terminal_text_display.scroll_following = true
+	terminal_text_display.bbcode_enabled = true
+	terminal_text_display.scroll_to_line(-1)
 	typing_timer.one_shot = true
 
 	# System start
@@ -23,16 +36,26 @@ func _ready() -> void:
 	await type_line("> CONNECTION ESTABLISHED.")
 	await type_line("> WELCOME, ADMINISTRATOR.")
 
+func _process(delta: float) -> void:
+	blink_timer += delta
+	if blink_timer > BLINK_SPEED:
+		blink_timer = 0
+		cursor_visible = !cursor_visible
+		_update_display()
 
 func add_line(disp_text: String) -> void:
 	lines.append(disp_text)
-	if lines.size() > MAX_LINES:
-		lines.pop_front()
+	_update_display()
 
-	clear()
-	append_text("\n".join(lines))
-	scroll_to_line(get_line_count() - 1)
-
+func _update_display() -> void:
+	terminal_text_display.clear()
+	var cursor_char
+	if cursor_visible:
+		cursor_char = "_"
+	else:
+		cursor_char = " "
+	terminal_text_display.append_text("\n".join(lines) + cursor_char)
+	terminal_text_display.scroll_to_line(terminal_text_display.get_line_count() - 1)
 
 func type_line(line: String) -> void:
 	var output = ""
@@ -42,10 +65,15 @@ func type_line(line: String) -> void:
 			lines.append(output)
 		else:
 			lines[-1] = output
-		clear()
-		append_text("\n".join(lines))
-		scroll_to_line(get_line_count() - 1)
-		await typing_timer.timeout
+		terminal_text_display.clear()
+		terminal_text_display.append_text("\n".join(lines))
+		terminal_text_display.scroll_to_line(terminal_text_display.get_line_count() - 1)
 		typing_timer.start(TYPING_SPEED)
+		await typing_timer.timeout
+
 
 	add_line("") # move to next line
+
+func on_start_chat(denizen):
+	var chat_response = denizen.start_chat_response()
+	type_line(chat_response)

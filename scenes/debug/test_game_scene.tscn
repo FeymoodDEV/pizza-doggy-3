@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhly82jesq508"]
+[gd_scene load_steps=7 format=3 uid="uid://bhly82jesq508"]
 
 [ext_resource type="PackedScene" uid="uid://drjg3dvrnqqve" path="res://src/core/game_scene.tscn" id="1_b6h4r"]
 [ext_resource type="Script" uid="uid://b3jelvm5mq866" path="res://src/servers/server.gd" id="2_prkhn"]
 [ext_resource type="Script" uid="uid://dad1phnueh2co" path="res://src/denizens/denizen.gd" id="3_7x385"]
+[ext_resource type="PackedScene" uid="uid://dfxaw6tw4vtwb" path="res://scenes/ui/terminal/chat_controller.tscn" id="4_fqxda"]
 [ext_resource type="PackedScene" uid="uid://bfmluxs5nh1yf" path="res://scenes/debug/server_list.tscn" id="4_prkhn"]
 [ext_resource type="PackedScene" uid="uid://cl8r8v3xudk8x" path="res://scenes/ui/terminal/terminal_text.tscn" id="5_7x385"]
 
@@ -72,6 +73,8 @@ metadata/_custom_type_script = "uid://dad1phnueh2co"
 script = ExtResource("3_7x385")
 metadata/_custom_type_script = "uid://dad1phnueh2co"
 
+[node name="ChatController" parent="." index="1" instance=ExtResource("4_fqxda")]
+
 [node name="Control" type="Control" parent="CanvasLayer" index="0"]
 layout_mode = 3
 anchors_preset = 15
@@ -99,6 +102,6 @@ layout_mode = 2
 [node name="TerminalText" parent="CanvasLayer/Control/HBoxContainer" index="1" instance=ExtResource("5_7x385")]
 layout_mode = 2
 
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
 position = Vector2(721, 402)
 zoom = Vector2(0.8, 0.8)

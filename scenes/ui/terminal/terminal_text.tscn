@@ -2,8 +2,28 @@
 
 [ext_resource type="Script" uid="uid://dhwuh7cpbnxo1" path="res://scenes/ui/terminal/terminal_text.gd" id="1_sv6s5"]
 
-[node name="TerminalText" type="RichTextLabel"]
-custom_minimum_size = Vector2(250, 400)
+[node name="TerminalText" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sv6s5")
+
+[node name="TypingTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 700)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TerminalTextDisplay" type="RichTextLabel" parent="VBoxContainer" groups=["terminal_text"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 652)
+layout_mode = 2
 bbcode_enabled = true
 text = "1
 2
@@ -36,7 +56,9 @@ text = "1
 29
 30"
 scroll_following = true
-script = ExtResource("1_sv6s5")
 
-[node name="TypingTimer" type="Timer" parent="."]
-autostart = true
+[node name="TerminalInput" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+placeholder_text = "Enter a number"

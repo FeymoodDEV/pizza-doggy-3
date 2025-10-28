@@ -31,3 +31,4 @@ func setup_UI():
 				denizen_panel.denizen_names_container.add_child(denizen_data_display, true)
 
 				denizen_data_display.denizen_name_label.text = child.denizen_name
+				denizen_data_display.denizen = child
