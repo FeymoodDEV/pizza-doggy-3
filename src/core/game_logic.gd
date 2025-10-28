@@ -79,6 +79,7 @@ func _on_requesting_random_move(emitter: Denizen):
 	if target_server.closed:
 		print("Server %s refused move request from %s due to being closed" % [target_server, emitter])
 	else:
+		print("%s moving to %s" % [emitter.denizen_name, target_server.server_name])
 		emitter.reparent(target_server)
 
 func _process(delta: float) -> void:

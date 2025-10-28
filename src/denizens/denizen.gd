@@ -5,8 +5,8 @@ class_name Denizen
 # I'm not sure what type to extend this from right now; I think it'll need to be serializable, so
 # I picked Node but Resource could probably work as well
 
-signal requesting_random_move()
-signal requesting_random_interaction()
+signal requesting_random_move
+signal requesting_random_interaction
 
 enum Mood {
 	NORMAL,
@@ -14,6 +14,8 @@ enum Mood {
 }
 ## Moods that a denizen can be under. Displayed on UI.
 # Add more as necessary
+
+@onready var base_den_controller: DenController = $BaseDenController
 
 var name_list = [
 	"Fred",
@@ -52,6 +54,8 @@ var status : Mood
 
 func _ready() -> void:
 	SignalBus.purge_denizen.connect(on_purge_denizen_button_pressed)
+	base_den_controller.target = self
+	base_den_controller.enabled = true
 
 func generate_name():
 	randomize()

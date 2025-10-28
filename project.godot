@@ -31,7 +31,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/editor/inspector_tabs/plugin.cfg", "res://addons/editor/script-ide/plugin.cfg", "res://addons/editor/sprite_painter/plugin.cfg")
 
 [file_customization]
 
