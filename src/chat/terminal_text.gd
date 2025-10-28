@@ -13,6 +13,7 @@ class_name TerminalText
 var lines: Array[String] = []
 var message_queue: Array[String] = []     # queued messages waiting to display
 var is_typing := false                    # prevents overlap
+var input_locked := false
 const MAX_LINES := 200
 const TYPING_SPEED := 0.02
 const BLINK_SPEED := 0.5
@@ -35,6 +36,7 @@ func _ready() -> void:
 	# restrict input to single digit and allow to change by clicking another number without selecting all
 	terminal_input.text_changed.connect(on_text_changed)
 	terminal_input.max_length = 2
+	terminal_input.keep_editing_on_text_submit = true
 
 	# Boot sequence queued instead of awaited
 	queue_line("> SYSTEM BOOTING...")
@@ -49,12 +51,15 @@ func _process(delta: float) -> void:
 		cursor_visible = !cursor_visible
 		_update_display()
 
-	# Process queued lines
+	# Process queued lines only if not already typing
 	if not is_typing and message_queue.size() > 0:
 		var next_line = message_queue.pop_front()
 		is_typing = true
+		input_locked = true
 		await type_line(next_line)
 		is_typing = false
+		input_locked = false
+
 
 
 func on_text_changed(new_text: String) -> void:
@@ -89,6 +94,11 @@ func _update_display() -> void:
 # Public entry point — safe to call anytime
 func queue_line(text: String) -> void:
 	message_queue.append(text)
+
+func clear_queue() -> void:
+	message_queue.clear()
+	is_typing = false
+	input_locked = false
 
 
 # Internal typewriter

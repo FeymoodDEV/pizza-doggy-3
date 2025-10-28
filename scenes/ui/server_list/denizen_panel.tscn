@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn31td60v5vc2"]
 
-[ext_resource type="Script" uid="uid://c44kpu0cmriqb" path="res://scenes/ui/server_list/denizen_panel.gd" id="1_0riwg"]
+[ext_resource type="Script" uid="uid://c44kpu0cmriqb" path="res://src/ui/denizen_panel.gd" id="1_0riwg"]
 [ext_resource type="PackedScene" uid="uid://cge14ikwpr32v" path="res://scenes/ui/server_list/denizen_data_display.tscn" id="2_ox2fj"]
 
 [node name="DenizenPanel" type="Panel"]

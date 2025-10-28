@@ -15,3 +15,5 @@ var server_name: String
 ## The server's name.
 var integrity: float
 ## The server's 'health'; goes does as it wears down.
+
+var server_max_occupants: int

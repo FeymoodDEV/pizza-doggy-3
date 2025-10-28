@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2eyl08phhbtv"]
 
-[ext_resource type="Script" uid="uid://brociqv2e1yoj" path="res://scenes/debug/server_occupants.gd" id="1_arnq1"]
+[ext_resource type="Script" uid="uid://brociqv2e1yoj" path="res://src/ui/server_occupants.gd" id="1_arnq1"]
 [ext_resource type="PackedScene" uid="uid://bn31td60v5vc2" path="res://scenes/ui/server_list/denizen_panel.tscn" id="1_ghqnn"]
 
 [node name="ServerOccupants" type="HBoxContainer"]
+custom_minimum_size = Vector2(510, 315)
 theme_override_constants/separation = 4
 alignment = 1
 script = ExtResource("1_arnq1")

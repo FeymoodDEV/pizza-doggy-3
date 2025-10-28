@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfmluxs5nh1yf"]
 
-[ext_resource type="Script" uid="uid://cyhvl04a3lrdo" path="res://scenes/debug/server_list.gd" id="1_dypl4"]
-[ext_resource type="PackedScene" uid="uid://b2eyl08phhbtv" path="res://scenes/debug/server_occupants.tscn" id="1_jjfq3"]
+[ext_resource type="Script" uid="uid://cyhvl04a3lrdo" path="res://src/ui/server_list.gd" id="1_dypl4"]
+[ext_resource type="PackedScene" uid="uid://b2eyl08phhbtv" path="res://scenes/ui/server_list/server_occupants.tscn" id="1_jjfq3"]
 
 [node name="ServerList" type="GridContainer"]
 offset_right = 304.0

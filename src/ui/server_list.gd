@@ -1,4 +1,5 @@
 extends GridContainer
+class_name ServerList
 
 func _ready() -> void:
 	# remove debug occupants

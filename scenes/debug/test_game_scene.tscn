@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://drjg3dvrnqqve" path="res://src/core/game_scene.tscn" id="1_b6h4r"]
 [ext_resource type="Script" uid="uid://b3jelvm5mq866" path="res://src/servers/server.gd" id="2_prkhn"]
 [ext_resource type="Script" uid="uid://dad1phnueh2co" path="res://src/denizens/denizen.gd" id="3_7x385"]
-[ext_resource type="PackedScene" uid="uid://dfxaw6tw4vtwb" path="res://scenes/ui/terminal/chat_controller.tscn" id="4_fqxda"]
-[ext_resource type="PackedScene" uid="uid://bfmluxs5nh1yf" path="res://scenes/debug/server_list.tscn" id="4_prkhn"]
-[ext_resource type="PackedScene" uid="uid://cl8r8v3xudk8x" path="res://scenes/ui/terminal/terminal_text.tscn" id="5_7x385"]
+[ext_resource type="PackedScene" uid="uid://dfxaw6tw4vtwb" path="res://scenes/ui/chat/chat_controller.tscn" id="4_fqxda"]
+[ext_resource type="PackedScene" uid="uid://bfmluxs5nh1yf" path="res://scenes/ui/server_list/server_list.tscn" id="4_prkhn"]
+[ext_resource type="PackedScene" uid="uid://cl8r8v3xudk8x" path="res://scenes/ui/chat/terminal_text.tscn" id="5_7x385"]
 
 [node name="GameScene" instance=ExtResource("1_b6h4r")]
 
@@ -30,14 +30,6 @@ script = ExtResource("2_prkhn")
 metadata/_custom_type_script = "uid://b3jelvm5mq866"
 
 [node name="DenizenA" type="Node" parent="GameLogic/Server2" index="0"]
-script = ExtResource("3_7x385")
-metadata/_custom_type_script = "uid://dad1phnueh2co"
-
-[node name="DenizenB" type="Node" parent="GameLogic/Server2" index="1"]
-script = ExtResource("3_7x385")
-metadata/_custom_type_script = "uid://dad1phnueh2co"
-
-[node name="DenizenC" type="Node" parent="GameLogic/Server2" index="2"]
 script = ExtResource("3_7x385")
 metadata/_custom_type_script = "uid://dad1phnueh2co"
 
@@ -66,10 +58,6 @@ script = ExtResource("3_7x385")
 metadata/_custom_type_script = "uid://dad1phnueh2co"
 
 [node name="DenizenB" type="Node" parent="GameLogic/Server4" index="1"]
-script = ExtResource("3_7x385")
-metadata/_custom_type_script = "uid://dad1phnueh2co"
-
-[node name="DenizenC" type="Node" parent="GameLogic/Server4" index="2"]
 script = ExtResource("3_7x385")
 metadata/_custom_type_script = "uid://dad1phnueh2co"
 

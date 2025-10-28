@@ -4,7 +4,7 @@ extends Node
 
 @onready var server_list: GridContainer = %ServerList
 
-var server_occupants_scene = preload("res://scenes/debug/server_occupants.tscn")
+var server_occupants_scene = preload("res://scenes/ui/server_list/server_occupants.tscn")
 var denizen_data_display_scene = preload("res://scenes/ui/server_list/denizen_data_display.tscn")
 
 func _ready() -> void:
@@ -27,10 +27,11 @@ func setup_UI():
 		server_occupants.server_label.text = server.server_name
 
 		var denizen_panel = server_occupants.denizen_panel
-
+		var denizen_count: int = 0
 		for child in server.get_children():
 			#print(child)
 			if child is Denizen:
+				denizen_count += 1
 				if child.denizen_name == "":
 					child.generate_name()
 				#print(child.denizen_name)
@@ -39,6 +40,9 @@ func setup_UI():
 
 				denizen_data_display.denizen_name_label.text = child.denizen_name
 				denizen_data_display.denizen = child
+
+				# Not sure if we care about max occupants? may scrap
+			server_occupants.set_max_occupants(5, denizen_count)
 
 func on_purge_button_pressed(_denizen):
 	await get_tree().process_frame

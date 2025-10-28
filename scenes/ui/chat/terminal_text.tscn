@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cl8r8v3xudk8x"]
 
-[ext_resource type="Script" uid="uid://dhwuh7cpbnxo1" path="res://scenes/ui/terminal/terminal_text.gd" id="1_sv6s5"]
+[ext_resource type="Script" uid="uid://dhwuh7cpbnxo1" path="res://src/chat/terminal_text.gd" id="1_sv6s5"]
 
 [node name="TerminalText" type="Control"]
 layout_mode = 3
@@ -62,4 +62,5 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 placeholder_text = "Enter a number"
-max_length = 1
+max_length = 2
+keep_editing_on_text_submit = true
