@@ -7,7 +7,7 @@ var terminal
 var terminal_input
 
 var current_denizen: Denizen
-var awaiting_input := false
+var ng_input := false
 
 func _ready() -> void:
 	terminal = get_tree().get_first_node_in_group("terminal_text")
@@ -15,51 +15,57 @@ func _ready() -> void:
 	terminal_input.visible = false
 	terminal_input.connect("text_submitted", Callable(self, "_on_text_submitted"))
 	SignalBus.start_chat.connect(on_start_chat)
-
+	SignalBus.purge_denizen.connect(on_purge_denizen)
 
 func on_start_chat(denizen: Denizen) -> void:
 	current_denizen = denizen
-	await play_intro()
-	await show_chat_options()
+	play_intro()
+	show_chat_options()
 
 func play_intro() -> void:
-	await terminal.type_line("> SUBJECT: " + current_denizen.denizen_name)
-	await terminal.type_line("> STATUS: " + str(current_denizen.describe_mood()))
+	terminal.queue_line("> SUBJECT: " + current_denizen.denizen_name)
+	terminal.queue_line("> STATUS: " + str(current_denizen.describe_mood()))
 
 func show_chat_options() -> void:
-	await terminal.type_line("> Ask about")
-	await terminal.type_line("> [1] origin")
-	await terminal.type_line("> [2] last seen event")
-	await terminal.type_line("> [3] mood")
+	terminal.queue_line("> Ask about")
+	terminal.queue_line("> [1] origin")
+	terminal.queue_line("> [2] last seen event")
+	terminal.queue_line("> [3] mood")
+	# Add unique denizen options here?
+	# ~ if denizen.has_flag("experienced break in reality") ~
+	# ~ "> [4] glitches" ~
 	terminal_input.visible = true
 	terminal_input.grab_focus()
 	var option := await wait_for_input()
 
 	match option:
 		1:
-			await terminal.type_line("> You: Where did you come from?")
-			await terminal.type_line("> " + current_denizen.denizen_name + ": " + current_denizen.start_chat_response())
+			terminal.queue_line("> You: Where did you come from?")
+			terminal.queue_line("> " + current_denizen.denizen_name + ": " + current_denizen.start_chat_response())
 		2:
-			await terminal.type_line("> You: What did you last witness?")
-			await terminal.type_line("> " + current_denizen.denizen_name + ": " + current_denizen.describe_last_event())
+			terminal.queue_line("> You: What did you last witness?")
+			terminal.queue_line("> " + current_denizen.denizen_name + ": " + current_denizen.describe_last_event())
 		3:
-			await terminal.type_line("> You: How are you feeling?")
-			await terminal.type_line("> " + current_denizen.denizen_name + ": " + current_denizen.describe_mood())
+			terminal.queue_line("> You: How are you feeling?")
+			terminal.queue_line("> " + current_denizen.denizen_name + ": " + current_denizen.describe_mood())
 		_:
-			await terminal.type_line("> Invalid selection.")
-			await show_chat_options()  # re-ask
-	await show_chat_options()
+			terminal.queue_line("> Invalid selection.")
+			show_chat_options()  # re-ask
+	show_chat_options()
 
 func wait_for_input() -> int:
-	awaiting_input = true
+	ng_input = true
 	var user_choice: int = await self.option_chosen
-	awaiting_input = false
+	ng_input = false
 	terminal_input.visible = false
 	return user_choice
 
 func _on_text_submitted(text: String) -> void:
-	if not awaiting_input:
+	if not ng_input:
 		return
 	terminal_input.text = ""
 	var choice := int(text) if text.is_valid_int() else 0
 	option_chosen.emit(choice)
+
+func on_purge_denizen(denizen):
+	terminal.queue_line("> " + denizen.denizen_name + " has been purged from the system.")
