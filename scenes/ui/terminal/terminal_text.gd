@@ -4,6 +4,8 @@ class_name TerminalText
 # Controls display of text and blinking cursor
 # See Chat Controller for overall text choices
 
+# Type Line displays a slowly typed line.
+
 @onready var terminal_text_display: RichTextLabel = %TerminalTextDisplay
 @onready var terminal_input: LineEdit = %TerminalInput
 @onready var typing_timer: Timer = %TypingTimer
@@ -31,10 +33,26 @@ func _ready() -> void:
 	terminal_text_display.scroll_to_line(-1)
 	typing_timer.one_shot = true
 
+
+	## Only allow input of numbers, and 1 character at a time
+	terminal_input.text_changed.connect(on_text_changed)
+	terminal_input.max_length = 1
+
 	# System start
 	await type_line("> SYSTEM BOOTING...")
 	await type_line("> CONNECTION ESTABLISHED.")
 	await type_line("> WELCOME, ADMINISTRATOR.")
+
+
+## Only numbers
+func on_text_changed(new_text: String) -> void:
+	var filtered := ""
+	for c in new_text:
+		if c.is_valid_int(): # keeps only digits 0–9
+			filtered += c
+	terminal_input.text = filtered
+	terminal_input.caret_column = filtered.length() # keeps caret at end
+
 
 func _process(delta: float) -> void:
 	blink_timer += delta

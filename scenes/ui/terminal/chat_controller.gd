@@ -38,17 +38,17 @@ func show_chat_options() -> void:
 	match option:
 		1:
 			await terminal.type_line("> You: Where did you come from?")
-			await terminal.type_line("> " + current_denizen.start_chat_response())
+			await terminal.type_line("> " + current_denizen.denizen_name + ": " + current_denizen.start_chat_response())
 		2:
 			await terminal.type_line("> You: What did you last witness?")
-			await terminal.type_line("> " + current_denizen.describe_last_event())
+			await terminal.type_line("> " + current_denizen.denizen_name + ": " + current_denizen.describe_last_event())
 		3:
 			await terminal.type_line("> You: How are you feeling?")
-			await terminal.type_line("> " + current_denizen.describe_mood())
+			await terminal.type_line("> " + current_denizen.denizen_name + ": " + current_denizen.describe_mood())
 		_:
 			await terminal.type_line("> Invalid selection.")
 			await show_chat_options()  # re-ask
-
+	await show_chat_options()
 
 func wait_for_input() -> int:
 	awaiting_input = true
@@ -62,4 +62,4 @@ func _on_text_submitted(text: String) -> void:
 		return
 	terminal_input.text = ""
 	var choice := int(text) if text.is_valid_int() else 0
-	emit_signal("option_chosen", choice)
+	option_chosen.emit(choice)
