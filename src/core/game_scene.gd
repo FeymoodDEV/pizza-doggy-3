@@ -1,6 +1,6 @@
 extends Node
 
-@onready var game_logic: GameState = $GameLogic
+@onready var game_logic: GameLogic = $GameLogic
 
 @onready var server_list: GridContainer = %ServerList
 
@@ -27,11 +27,11 @@ func setup_UI():
 		server_occupants.server_label.text = server.server_name
 
 		var denizen_panel = server_occupants.denizen_panel
-		var denizen_count: int = 0
+		#var denizen_count: int = 0
 		for child in server.get_children():
 			#print(child)
 			if child is Denizen:
-				denizen_count += 1
+				#denizen_count += 1
 				if child.denizen_name == "":
 					child.generate_name()
 				#print(child.denizen_name)
@@ -41,8 +41,8 @@ func setup_UI():
 				denizen_data_display.denizen_name_label.text = child.denizen_name
 				denizen_data_display.denizen = child
 
-				# Not sure if we care about max occupants? may scrap
-			server_occupants.set_max_occupants(5, denizen_count)
+			# Not sure if we care about max occupants? may scrap
+			#server_occupants.set_max_occupants(5, denizen_count)
 
 func on_purge_button_pressed(_denizen):
 	await get_tree().process_frame

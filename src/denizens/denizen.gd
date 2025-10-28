@@ -5,7 +5,8 @@ class_name Denizen
 # I'm not sure what type to extend this from right now; I think it'll need to be serializable, so
 # I picked Node but Resource could probably work as well
 
-signal attempting_move(server: Server)
+signal requesting_random_move()
+signal requesting_random_interaction()
 
 enum Mood {
 	NORMAL,
@@ -81,7 +82,7 @@ func describe_last_event() -> String:
 		return  "I do not recall anything recent."
 	else:
 		return memory[-1]
-
+		
 
 func on_purge_denizen_button_pressed(denizen):
 	delete(denizen)
@@ -89,3 +90,13 @@ func on_purge_denizen_button_pressed(denizen):
 func delete(denizen):
 	if denizen == self:
 		queue_free()
+
+## Interact with a denizen.
+func accept_interaction(denizen: Denizen):
+	print("%s is interacting with %s" % [denizen.denizen_name, self.denizen_name])
+	pass
+
+## Returns true if the denizen is available for interaction with other denizens.
+## Anomalies could be made to affect this
+func can_interact():
+	return true

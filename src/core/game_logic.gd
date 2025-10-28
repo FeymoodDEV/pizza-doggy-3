@@ -1,5 +1,5 @@
 extends Node
-class_name GameState
+class_name GameLogic
 
 @export var INITIAL_DRONE_COUNT = 2
 
@@ -50,11 +50,36 @@ func _ready() -> void:
 	servers = children.filter(func (x): return x is Server)
 	denizens = []
 	for s in servers:
-		for i in s.get_children():
-			if i is Denizen:
-				denizens.append(i)
+		# connect relevant server signals here
+		
+		# denizens:
+		for c in s.get_children():
+			if c is Denizen:
+				c.requesting_random_interaction.connect(_on_requesting_random_interaction.bind(c))
+				c.requesting_random_move.connect(_on_requesting_random_move.bind(c))
+				denizens.append(c)
 
+func _on_requesting_random_interaction(emitter: Denizen):
+	var server = emitter.get_parent() # TODO: do better
+	
+	# Get all denizens in the same server that can interact
+	var available_denizens = server.get_children().filter(func(x): 
+		return x is Denizen and x != emitter and x.can_interact()
+		)
+	var selected_denizen : Denizen = available_denizens.pick_random()
+	
+	selected_denizen.accept_interaction(emitter)
 
+func _on_requesting_random_move(emitter: Denizen):
+	var target_server = servers.pick_random()
+	# don't move to the same server
+	while target_server == emitter.get_parent(): # TODO: do better
+		target_server = servers.pick_random()
+	
+	if target_server.closed:
+		print("Server %s refused move request from %s due to being closed" % [target_server, emitter])
+	else:
+		emitter.reparent(target_server)
 
 func _process(delta: float) -> void:
 	pass

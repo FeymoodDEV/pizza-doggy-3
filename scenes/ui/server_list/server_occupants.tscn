@@ -22,6 +22,7 @@ layout_mode = 2
 
 [node name="MaxOccupantsLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 text = "Max Occupants - 0/5"

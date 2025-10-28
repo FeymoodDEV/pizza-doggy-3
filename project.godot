@@ -33,3 +33,7 @@ enabled=PackedStringArray()
 folder_colors={
 "res://addons/editor/_Godot-IDE_/plugins": "blue"
 }
+
+[rendering]
+
+renderer/rendering_method="mobile"
