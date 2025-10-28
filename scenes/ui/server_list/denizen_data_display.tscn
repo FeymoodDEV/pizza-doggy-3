@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://cge14ikwpr32v"]
+
+[ext_resource type="Script" uid="uid://u50ys8mc21vl" path="res://scenes/ui/server_list/denizen_data_display.gd" id="1_wdmp1"]
+
+[node name="DenizenDataDisplay" type="HBoxContainer"]
+custom_minimum_size = Vector2(250, 30)
+offset_right = 250.0
+offset_bottom = 35.0
+script = ExtResource("1_wdmp1")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="DenizenNameLabel" type="Label" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChatButton" type="Button" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Chat"
+
+[node name="PurgeButton" type="Button" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+size_flags_vertical = 4
+text = "PURGE"

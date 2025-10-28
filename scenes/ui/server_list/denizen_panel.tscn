@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn31td60v5vc2"]
+[gd_scene load_steps=3 format=3 uid="uid://bn31td60v5vc2"]
 
 [ext_resource type="Script" uid="uid://c44kpu0cmriqb" path="res://scenes/ui/server_list/denizen_panel.gd" id="1_0riwg"]
+[ext_resource type="PackedScene" uid="uid://cge14ikwpr32v" path="res://scenes/ui/server_list/denizen_data_display.tscn" id="2_ox2fj"]
 
 [node name="DenizenPanel" type="Panel"]
-custom_minimum_size = Vector2(250, 250)
+custom_minimum_size = Vector2(350, 250)
 script = ExtResource("1_0riwg")
 
 [node name="DenizenNamesContainer" type="VBoxContainer" parent="."]
@@ -16,31 +17,5 @@ offset_bottom = 101.0
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Label" type="Label" parent="DenizenNamesContainer"]
+[node name="DenizenDataDisplay" parent="DenizenNamesContainer" instance=ExtResource("2_ox2fj")]
 layout_mode = 2
-text = "Denizen Name"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="DenizenNamesContainer"]
-layout_mode = 2
-text = "Denizen Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="DenizenNamesContainer"]
-layout_mode = 2
-text = "Denizen Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="DenizenNamesContainer"]
-layout_mode = 2
-text = "Denizen Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label5" type="Label" parent="DenizenNamesContainer"]
-layout_mode = 2
-text = "Denizen Name"
-horizontal_alignment = 1
-vertical_alignment = 1

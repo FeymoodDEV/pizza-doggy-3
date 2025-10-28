@@ -5,7 +5,7 @@ extends Node
 @onready var server_list: GridContainer = %ServerList
 
 var server_occupants_scene = preload("res://scenes/debug/server_occupants.tscn")
-var denizen_label_scene = preload("res://scenes/ui/server_list/denizen_name.tscn")
+var denizen_data_display_scene = preload("res://scenes/ui/server_list/denizen_data_display.tscn")
 
 func _ready() -> void:
 	setup_UI()
@@ -27,7 +27,7 @@ func setup_UI():
 			if child is Denizen:
 				child.generate_name()
 				#print(child.denizen_name)
-				var denizen_label = denizen_label_scene.instantiate()
-				denizen_panel.denizen_names_container.add_child(denizen_label, true)
+				var denizen_data_display = denizen_data_display_scene.instantiate()
+				denizen_panel.denizen_names_container.add_child(denizen_data_display, true)
 
-				denizen_label.text = child.denizen_name
+				denizen_data_display.denizen_name_label.text = child.denizen_name

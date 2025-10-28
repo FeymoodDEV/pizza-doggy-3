@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl8r8v3xudk8x"]
+
+[ext_resource type="Script" uid="uid://dhwuh7cpbnxo1" path="res://scenes/ui/terminal/terminal_text.gd" id="1_sv6s5"]
+
+[node name="TerminalText" type="RichTextLabel"]
+custom_minimum_size = Vector2(250, 400)
+bbcode_enabled = true
+text = "1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30"
+scroll_following = true
+script = ExtResource("1_sv6s5")
+
+[node name="TypingTimer" type="Timer" parent="."]
+autostart = true
