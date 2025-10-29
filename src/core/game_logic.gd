@@ -3,40 +3,27 @@ class_name GameLogic
 
 @export var INITIAL_DRONE_COUNT = 2
 
-var drones : int
 ## Available drone count
+var drones : int
 
-enum CraftingResource {
-	SILICA,
-	COPPER,
-	GLASS,
-	PLASTIC,
-	GOLD,
-	ALUMINUM,
-	HAFNIUM,
-}
-## Resources that exist in the game
+@export var hardware_info : HardwareInfo
 
-var resources : Dictionary[CraftingResource, int] = {
-	CraftingResource.SILICA: 0,
-	CraftingResource.COPPER: 0,
-	CraftingResource.GLASS: 0,
-	CraftingResource.PLASTIC: 0,
-	CraftingResource.GOLD: 0,
-	CraftingResource.ALUMINUM: 0,
-	CraftingResource.HAFNIUM: 0,
-}
-## Resources available
-# change this to stringnames if you hate enums; but it's not like we'll add more
-# and i don't really like magic strings
+## Current resource counts
+var current_resources : Dictionary[StringName, int]
+
+## Server parts currently in storage
+var current_parts : Dictionary[StringName, int]
 
 
 var servers: Array[Node]
 var denizens: Array[Node]
 
-
 func _ready() -> void:
-	##drones = INITIAL_DRONE_COUNT
+	drones = INITIAL_DRONE_COUNT
+	
+	# initialize resource counts
+	for i in hardware_info.resources.keys():
+		current_resources[i] = 0
 
 	# We need to:
 	# - Create initial servers. Keep track of em
@@ -89,5 +76,81 @@ func _on_requesting_random_move(emitter: Denizen):
 func _process(delta: float) -> void:
 	pass
 
+#region Drones
 # TODO: Drone task handling
-#
+func order_harvest(resource: StringName):
+	if drones <= 0:
+		return
+	
+	var task := Timer.new()
+	task.timeout.connect(_on_successful_harvest.bind(
+		task,
+		resource
+	))
+	# TODO: ui
+	task.start(hardware_info.resources[resource][&"harvest_time"])
+
+func order_repair(server: Server):
+	if drones <= 0:
+		return
+	
+	# check if we meet the cost requirements
+	var requirements = server.get_repair_costs()
+	for resource in requirements.keys():
+		if current_resources[resource] < requirements[resource]:
+			return
+	
+	# pay the cost
+	for resource in requirements.keys():
+		current_resources[resource] -= requirements[resource]
+	
+	# create the task
+	var task := Timer.new()
+	task.timeout.connect(_on_successful_harvest.bind(
+		task,
+		server
+	))
+	# TODO: ui
+	task.start(30.0)
+
+func order_synthesis(recipe: StringName):
+	if drones <= 0:
+		return
+	
+	var requirements : Dictionary = hardware_info.recipes[recipe]
+	var harvest_time = requirements[&"harvest_time"]
+	requirements.erase(&"harvest_time") # this sucks i know
+	for resource in requirements.keys():
+		if current_resources[resource] < requirements[resource]:
+			return
+	
+	# pay the cost
+	for resource in requirements.keys():
+		current_resources[resource] -= requirements[resource]
+	
+	var task := Timer.new()
+	task.timeout.connect(_on_successful_synthesis.bind(
+		task,
+		recipe
+	))
+	# TODO: ui
+	task.start(harvest_time)
+
+func _on_successful_harvest(task: Timer, resource: StringName):
+	drones += 1
+	current_resources[resource] += hardware_info.resources[resource][&"harvest_count"]
+	# TODO: ui
+	task.queue_free()
+	
+func _on_successful_repair(task: Timer, server: Server):
+	drones += 1
+	server.integrity = server.MAX_INTEGRITY
+	server.alive = true
+
+func _on_successful_synthesis(task: Timer, item: StringName):
+	drones += 1
+	if item == &"new_drone":
+		drones += 1
+	else:
+		current_parts[item] = 1 if item in current_parts else current_parts[item] + 1
+#endregion
