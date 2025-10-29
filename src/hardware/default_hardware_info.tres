@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="HardwareInfo" load_steps=2 format=3 uid="uid://b6bgipqsvayea"]
+
+[ext_resource type="Script" uid="uid://pjj26cfx7avt" path="res://src/hardware/hardware_info.gd" id="1_2xkb6"]
+
+[resource]
+script = ExtResource("1_2xkb6")
+metadata/_custom_type_script = "uid://pjj26cfx7avt"

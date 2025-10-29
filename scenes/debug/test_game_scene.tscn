@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhly82jesq508"]
+[gd_scene load_steps=8 format=3 uid="uid://bhly82jesq508"]
 
 [ext_resource type="PackedScene" uid="uid://drjg3dvrnqqve" path="res://src/core/game_scene.tscn" id="1_b6h4r"]
-[ext_resource type="Script" uid="uid://b3jelvm5mq866" path="res://src/servers/server.gd" id="2_prkhn"]
+[ext_resource type="Resource" uid="uid://b6bgipqsvayea" path="res://src/hardware/default_hardware_info.tres" id="2_lwglu"]
+[ext_resource type="Script" uid="uid://b3jelvm5mq866" path="res://src/hardware/server.gd" id="2_prkhn"]
 [ext_resource type="PackedScene" uid="uid://rccmoiibmewl" path="res://src/denizens/denizen.tscn" id="3_fqxda"]
 [ext_resource type="PackedScene" uid="uid://dfxaw6tw4vtwb" path="res://scenes/ui/chat/chat_controller.tscn" id="4_fqxda"]
 [ext_resource type="PackedScene" uid="uid://bfmluxs5nh1yf" path="res://scenes/ui/server_list/server_list.tscn" id="4_prkhn"]
 [ext_resource type="PackedScene" uid="uid://cl8r8v3xudk8x" path="res://scenes/ui/chat/terminal_text.tscn" id="5_7x385"]
 
 [node name="GameScene" instance=ExtResource("1_b6h4r")]
+
+[node name="GameLogic" parent="." index="0"]
+hardware_info = ExtResource("2_lwglu")
 
 [node name="Server1" type="Node" parent="GameLogic" index="0"]
 script = ExtResource("2_prkhn")
