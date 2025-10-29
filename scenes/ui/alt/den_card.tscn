@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://hulqp3iqhd7a"]
+
+[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="1_q7os8"]
+
+[node name="DenCard" type="MarginContainer"]
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DenInfobox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DenImage" type="TextureRect" parent="DenInfobox"]
+layout_mode = 2
+texture = ExtResource("1_q7os8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DenInfobox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="DenName" type="RichTextLabel" parent="DenInfobox/VBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "JEREMY"
+horizontal_alignment = 3
+
+[node name="DenName2" type="RichTextLabel" parent="DenInfobox/VBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "IN: PLAZA"
+horizontal_alignment = 3

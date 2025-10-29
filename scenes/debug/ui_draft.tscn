@@ -13,10 +13,9 @@ default_font_size = 20
 [node name="UI" type="Control"]
 material = SubResource("ShaderMaterial_1g7uv")
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchor_right = 0.75000006
 anchor_bottom = 1.0
-offset_right = -320.0
+offset_right = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_mlrgv")

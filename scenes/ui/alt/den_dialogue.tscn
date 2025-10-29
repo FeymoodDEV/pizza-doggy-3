@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqnvemmhe5ems"]
+
+[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="1_0l2dt"]
+[ext_resource type="Script" uid="uid://bys00qdjwlgun" path="res://src/ui/den_dialogue.gd" id="1_m0h8u"]
+
+[node name="DenDialogue" type="VBoxContainer"]
+script = ExtResource("1_m0h8u")
+
+[node name="DenInfobox" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DenImage" type="TextureRect" parent="DenInfobox"]
+layout_mode = 2
+texture = ExtResource("1_0l2dt")
+
+[node name="DenName" type="RichTextLabel" parent="DenInfobox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "JEREMY"
+fit_content = true
+vertical_alignment = 1
+
+[node name="MessageText" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HI I'M JEREMY I SAY THINGS AND STUFF"
+fit_content = true
+vertical_alignment = 1
