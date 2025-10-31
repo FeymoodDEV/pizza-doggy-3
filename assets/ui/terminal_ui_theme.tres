@@ -1,0 +1,130 @@
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://8sou88etkpg7"]
+
+[ext_resource type="FontFile" uid="uid://bskqq43blxa5n" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="1_df8fp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fw637"]
+bg_color = Color(0.14117648, 0.14117648, 0.14901961, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xd6cb"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.6, 0.8980392, 0.3137255, 0.49803922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fp1vs"]
+bg_color = Color(0.6, 0.8980392, 0.3137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l1eo"]
+bg_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hs13d"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0nh6"]
+bg_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8neej"]
+bg_color = Color(0.19607843, 0.23529412, 0.22352941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mafe"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twsic"]
+bg_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df8fp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0nh6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy1ru"]
+content_margin_left = 5.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lle2v"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.6, 0.8980392, 0.3137255, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvidq"]
+bg_color = Color(0.6, 0.8980392, 0.3137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.19607843, 0.23529412, 0.22352941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xi1pl"]
+bg_color = Color(0.6, 0.8980392, 0.3137255, 1)
+border_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23g68"]
+bg_color = Color(0.19607843, 0.23529412, 0.22352941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.8980392, 0.3137255, 1)
+
+[resource]
+default_font = ExtResource("1_df8fp")
+default_font_size = 16
+ContextMenu/base_type = &"PanelContainer"
+ContextMenu/styles/panel = SubResource("StyleBoxFlat_fw637")
+ContextMenuComponentBorder/base_type = &"Panel"
+ContextMenuComponentBorder/styles/panel = SubResource("StyleBoxFlat_xd6cb")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_fp1vs")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_2l1eo")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_hs13d")
+LogSeparator/base_type = &"Panel"
+LogSeparator/styles/panel = SubResource("StyleBoxFlat_n0nh6")
+Panel/styles/panel = SubResource("StyleBoxFlat_8neej")
+ProgressBar/colors/font_color = Color(0.6, 0.8980392, 0.3137255, 1)
+ProgressBar/colors/font_outline_color = Color(0.19607843, 0.23529412, 0.22352941, 1)
+ProgressBar/constants/outline_size = 8
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0mafe")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_twsic")
+RichTextLabel/colors/default_color = Color(0.6, 0.8980392, 0.3137255, 1)
+TabContainer/colors/font_selected_color = Color(0.19607843, 0.23529412, 0.22352941, 1)
+TabContainer/colors/font_unselected_color = Color(0.6, 0.8980392, 0.3137255, 1)
+TabContainer/styles/panel = SubResource("StyleBoxFlat_df8fp")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_n0nh6")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_jy1ru")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_lle2v")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_jy1ru")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_hvidq")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_xi1pl")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_23g68")

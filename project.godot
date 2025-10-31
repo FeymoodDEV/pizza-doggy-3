@@ -39,6 +39,10 @@ folder_colors={
 "res://addons/editor/_Godot-IDE_/plugins": "blue"
 }
 
+[gui]
+
+theme/custom="uid://8sou88etkpg7"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

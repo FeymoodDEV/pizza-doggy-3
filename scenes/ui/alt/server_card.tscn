@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://x48k1kbnayiq"]
+
+[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="1_tri4d"]
+[ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="2_cm8xn"]
+
+[node name="ServerCard" type="MarginContainer"]
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="ServerIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_tri4d")
+stretch_mode = 5
+
+[node name="ServerTextboxes" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ServerName" type="RichTextLabel" parent="HBoxContainer/ServerTextboxes"]
+layout_mode = 2
+text = "PLAZA"
+fit_content = true
+
+[node name="ServerInfo" type="RichTextLabel" parent="HBoxContainer/ServerTextboxes"]
+layout_mode = 2
+text = "87.5% INTEGRITY
+* RAM: DDR98
+* CPU: JULIO MK6
+"
+fit_content = true
+
+[node name="ContextMenuComponent" parent="." instance=ExtResource("2_cm8xn")]
+layout_mode = 2

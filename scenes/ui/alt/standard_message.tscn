@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://demxo2cwwnc07"]
+
+[node name="StandardMessage" type="MarginContainer"]
+offset_right = 375.0
+offset_bottom = 133.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LogSeparator" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_type_variation = &"LogSeparator"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+
+[node name="Message" type="RichTextLabel" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "JEREMY JUST DROPPED A FAT DOOKE BEHIND THE COUCH"
+fit_content = true

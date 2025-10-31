@@ -10,7 +10,34 @@
 
 [node name="GameScene" instance=ExtResource("1_b6h4r")]
 
-[node name="GameLogic" parent="." index="0"]
+[node name="CanvasLayer_Control_HBoxContainer_MarginContainer#ServerList" parent="." index="0" instance=ExtResource("4_prkhn")]
+unique_name_in_owner = true
+
+[node name="CanvasLayer_Control_HBoxContainer#TerminalText" parent="." index="1" instance=ExtResource("5_7x385")]
+
+[node name="CanvasLayer_Control_HBoxContainer#MarginContainer" type="MarginContainer" parent="." index="2"]
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+position = Vector2(721, 402)
+zoom = Vector2(0.8, 0.8)
+
+[node name="CanvasLayer_Control#HBoxContainer" type="HBoxContainer" parent="." index="4"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer#Control" type="Control" parent="." index="5"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameLogic" parent="." index="6"]
 hardware_info = ExtResource("2_lwglu")
 
 [node name="Server1" type="Node" parent="GameLogic" index="0"]
@@ -51,35 +78,7 @@ metadata/_custom_type_script = "uid://b3jelvm5mq866"
 
 [node name="Denizen11" parent="GameLogic/Server4" index="1" instance=ExtResource("3_fqxda")]
 
-[node name="ChatController" parent="." index="1" instance=ExtResource("4_fqxda")]
+[node name="ChatController2" parent="." index="7" instance=ExtResource("4_fqxda")]
 
-[node name="Control" type="Control" parent="CanvasLayer" index="0"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" index="0"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer" index="0"]
-layout_mode = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 10
-
-[node name="ServerList" parent="CanvasLayer/Control/HBoxContainer/MarginContainer" index="0" instance=ExtResource("4_prkhn")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="TerminalText" parent="CanvasLayer/Control/HBoxContainer" index="1" instance=ExtResource("5_7x385")]
-layout_mode = 2
-
-[node name="Camera2D" type="Camera2D" parent="." index="3"]
-position = Vector2(721, 402)
-zoom = Vector2(0.8, 0.8)
+[node name="UI" parent="Visual" index="0"]
+visible = false

@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcmo5gfby34ys"]
+
+[ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="1_s1gxb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Random thing" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 121.0
+offset_right = 243.0
+offset_bottom = 161.0
+
+[node name="ContextMenuComponent" parent="Random thing" instance=ExtResource("1_s1gxb")]
+layout_mode = 1
+
+[node name="Random thing2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 283.0
+offset_right = 389.0
+offset_bottom = 323.0
+
+[node name="ContextMenuComponent" parent="Random thing2" instance=ExtResource("1_s1gxb")]
+layout_mode = 1
+
+[node name="Random thing3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 548.0
+offset_top = 91.0
+offset_right = 588.0
+offset_bottom = 131.0
+
+[node name="ContextMenuComponent" parent="Random thing3" instance=ExtResource("1_s1gxb")]
+layout_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 162.0
+offset_right = 601.0
+offset_bottom = 278.0

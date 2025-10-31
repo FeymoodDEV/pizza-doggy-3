@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://hulqp3iqhd7a"]
+[gd_scene load_steps=3 format=3 uid="uid://hulqp3iqhd7a"]
 
-[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="1_q7os8"]
+[ext_resource type="Texture2D" uid="uid://rqrfturiwqat" path="res://assets/debug/plhold_denizen_icon.png" id="1_q7os8"]
+[ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="2_82i1n"]
 
 [node name="DenCard" type="MarginContainer"]
+offset_right = 320.0
+offset_bottom = 84.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -27,6 +30,7 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+bbcode_enabled = true
 text = "JEREMY"
 horizontal_alignment = 3
 
@@ -37,3 +41,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "IN: PLAZA"
 horizontal_alignment = 3
+
+[node name="ContextMenuComponent" parent="." instance=ExtResource("2_82i1n")]
+layout_mode = 2

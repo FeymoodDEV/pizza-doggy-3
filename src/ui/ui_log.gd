@@ -8,7 +8,7 @@ class_name UiLog
 @onready var send_button: Button = $InputArea/SendButton
 
 @onready var den_dialogue := preload("res://scenes/ui/alt/den_dialogue.tscn")
-#@onready var standard_message := preload("")
+@onready var standard_message := preload("res://scenes/ui/alt/standard_message.tscn")
 
 ## Print dialogue from a denizen or the player, complete with infobox
 func print_dialogue(speaker: Denizen, text: String):
@@ -20,8 +20,8 @@ func print_dialogue(speaker: Denizen, text: String):
 	# TODO: add some for admin
 	
 	#message.den_image = ...
-	message.den_name = speaker.name
-	message.message_text = text
+	message.den_name.text = speaker.name
+	message.message_text.text = text
 	
 	log_messages.add_child(message)
 	# TODO: scroll

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs4g2sfswgycw"]
+
+[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="1_gjfe2"]
+[ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="2_ew08v"]
+
+[node name="TaskCard" type="MarginContainer"]
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="DroneIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_gjfe2")
+stretch_mode = 5
+
+[node name="TaskBoxes" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TaskTitle" type="RichTextLabel" parent="HBoxContainer/TaskBoxes"]
+layout_mode = 2
+text = "HARVEST: HAFNIUM"
+fit_content = true
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/TaskBoxes"]
+layout_mode = 2
+value = 66.89
+
+[node name="ServerInfo" type="RichTextLabel" parent="HBoxContainer/TaskBoxes"]
+layout_mode = 2
+text = "ETA: -0:27
++ HAFNIUM X5"
+fit_content = true
+
+[node name="ContextMenuComponent" parent="." instance=ExtResource("2_ew08v")]
+layout_mode = 2

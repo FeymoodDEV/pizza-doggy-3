@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwxkbge2k1h8c"]
+[gd_scene load_steps=10 format=3 uid="uid://dwxkbge2k1h8c"]
 
-[ext_resource type="FontFile" uid="uid://c14dplgb7kp78" path="res://assets/fonts/BitcountGridSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf" id="1_0gflj"]
 [ext_resource type="Texture2D" uid="uid://maag1eoswh7c" path="res://assets/debug/plhold_ui_banner.png" id="2_2wgue"]
-[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="3_xi62n"]
+[ext_resource type="Theme" uid="uid://8sou88etkpg7" path="res://assets/ui/terminal_ui_theme.tres" id="2_xi62n"]
+[ext_resource type="PackedScene" uid="uid://hulqp3iqhd7a" path="res://scenes/ui/alt/den_card.tscn" id="3_xi62n"]
+[ext_resource type="PackedScene" uid="uid://bqnvemmhe5ems" path="res://scenes/ui/alt/den_dialogue.tscn" id="4_1g7uv"]
+[ext_resource type="Texture2D" uid="uid://wevnxi5q8k3e" path="res://assets/ui/icon_send.png" id="4_2wgue"]
+[ext_resource type="PackedScene" uid="uid://x48k1kbnayiq" path="res://scenes/ui/alt/server_card.tscn" id="4_mlrgv"]
+[ext_resource type="PackedScene" uid="uid://demxo2cwwnc07" path="res://scenes/ui/alt/standard_message.tscn" id="5_1g7uv"]
+[ext_resource type="PackedScene" uid="uid://cs4g2sfswgycw" path="res://scenes/ui/alt/task_card.tscn" id="5_7t0sg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1g7uv"]
-
-[sub_resource type="Theme" id="Theme_mlrgv"]
-default_font = ExtResource("1_0gflj")
-default_font_size = 20
 
 [node name="UI" type="Control"]
 material = SubResource("ShaderMaterial_1g7uv")
@@ -18,19 +19,27 @@ anchor_bottom = 1.0
 offset_right = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_mlrgv")
+theme = ExtResource("2_xi62n")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 111.0
+offset_bottom = 120.0
 grow_horizontal = 2
+theme_type_variation = &"TerminalHeader"
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
@@ -43,7 +52,6 @@ texture = ExtResource("2_2wgue")
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
@@ -64,580 +72,202 @@ grow_vertical = 2
 [node name="TabContainer" type="TabContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 0
+current_tab = 2
 
 [node name="DENIZENS" type="ScrollContainer" parent="HBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="DENIZEN OVERVIEW" type="VFlowContainer" parent="HBoxContainer/TabContainer/DENIZENS"]
+[node name="DenizenOverview" type="VFlowContainer" parent="HBoxContainer/TabContainer/DENIZENS"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DenCard" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
+[node name="DenCard" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard"]
-custom_minimum_size = Vector2(300, 0)
+[node name="DenCard2" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard/DenInfobox"]
+[node name="DenCard3" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-texture = ExtResource("3_xi62n")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard/DenInfobox"]
+[node name="DenCard4" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
 
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
+[node name="DenCard5" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
 
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
+[node name="DenCard6" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
 
-[node name="DenCard2" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
+[node name="DenCard7" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard2"]
-custom_minimum_size = Vector2(300, 0)
+[node name="DenCard8" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard2/DenInfobox"]
+[node name="DenCard9" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-texture = ExtResource("3_xi62n")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard2/DenInfobox"]
+[node name="DenCard10" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
 
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard2/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
+[node name="DenCard11" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
 
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard2/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
+[node name="DenCard12" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
 
-[node name="DenCard3" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
+[node name="DenCard13" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard3"]
-custom_minimum_size = Vector2(300, 0)
+[node name="DenCard14" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard3/DenInfobox"]
+[node name="DenCard15" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-texture = ExtResource("3_xi62n")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard3/DenInfobox"]
+[node name="DenCard16" parent="HBoxContainer/TabContainer/DENIZENS/DenizenOverview" instance=ExtResource("3_xi62n")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
 
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard3/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard3/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard4" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard4"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard4/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard4/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard4/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard4/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard5" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard5"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard5/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard5/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard5/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard5/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard6" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard6"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard6/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard6/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard6/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard6/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard7" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard7"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard7/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard7/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard7/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard7/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard8" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard8"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard8/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard8/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard8/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard8/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard9" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard9"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard9/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard9/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard9/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard9/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard10" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard10"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard10/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard10/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard10/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard10/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard11" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard11"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard11/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard11/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard11/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard11/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard12" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard12"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard12/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard12/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard12/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard12/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard13" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard13"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard13/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard13/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard13/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard13/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard14" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard14"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard14/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard14/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard14/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard14/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="DenCard15" type="MarginContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard15"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard15/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard15/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 6
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard15/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JEREMY"
-horizontal_alignment = 3
-
-[node name="DenName2" type="RichTextLabel" parent="HBoxContainer/TabContainer/DENIZENS/DENIZEN OVERVIEW/DenCard15/DenInfobox/VBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "IN: PLAZA"
-horizontal_alignment = 3
-
-[node name="SERVERS" type="VFlowContainer" parent="HBoxContainer/TabContainer"]
+[node name="SERVERS" type="ScrollContainer" parent="HBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="DRONES" type="VFlowContainer" parent="HBoxContainer/TabContainer"]
-visible = false
+[node name="ServerOverview" type="VFlowContainer" parent="HBoxContainer/TabContainer/SERVERS"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ServerCard" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard2" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard3" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard4" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard5" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard6" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard7" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard8" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard9" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="ServerCard10" parent="HBoxContainer/TabContainer/SERVERS/ServerOverview" instance=ExtResource("4_mlrgv")]
+layout_mode = 2
+
+[node name="DRONES" type="VBoxContainer" parent="HBoxContainer/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="ControlZone" type="HBoxContainer" parent="HBoxContainer/TabContainer/DRONES"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/TabContainer/DRONES/ControlZone"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/TabContainer/DRONES/ControlZone/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AVAILABLE DRONES: 5"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/TabContainer/DRONES/ControlZone"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/TabContainer/DRONES/ControlZone/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/TabContainer/DRONES/ControlZone/GridContainer/MarginContainer"]
+layout_mode = 2
+text = "HARVEST"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/TabContainer/DRONES/ControlZone/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/TabContainer/DRONES/ControlZone/GridContainer/MarginContainer2"]
+layout_mode = 2
+text = "REPAIR"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/TabContainer/DRONES/ControlZone/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/TabContainer/DRONES/ControlZone/GridContainer/MarginContainer3"]
+layout_mode = 2
+text = "SYNTHETISE"
+
+[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/TabContainer/DRONES/ControlZone/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/TabContainer/DRONES/ControlZone/GridContainer/MarginContainer4"]
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="Panel" type="Panel" parent="HBoxContainer/TabContainer/DRONES"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_type_variation = &"LogSeparator"
+
+[node name="TasksZone" type="ScrollContainer" parent="HBoxContainer/TabContainer/DRONES"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 1
+
+[node name="TaskOverview" type="VFlowContainer" parent="HBoxContainer/TabContainer/DRONES/TasksZone"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TaskCard" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard2" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard3" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard4" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard5" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard6" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard7" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard8" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard9" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
+
+[node name="TaskCard10" parent="HBoxContainer/TabContainer/DRONES/TasksZone/TaskOverview" instance=ExtResource("5_7t0sg")]
+layout_mode = 2
 
 [node name="Log" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -657,177 +287,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
 
-[node name="LogMessage" type="VBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages"]
+[node name="DenDialogue" parent="HBoxContainer/Log/LogScroll/LogMessages" instance=ExtResource("4_1g7uv")]
 layout_mode = 2
 
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage"]
+[node name="DenDialogue2" parent="HBoxContainer/Log/LogScroll/LogMessages" instance=ExtResource("4_1g7uv")]
+layout_mode = 2
+
+[node name="StandardMessage" parent="HBoxContainer/Log/LogScroll/LogMessages" instance=ExtResource("5_1g7uv")]
+layout_mode = 2
+
+[node name="StandardMessage2" parent="HBoxContainer/Log/LogScroll/LogMessages" instance=ExtResource("5_1g7uv")]
+layout_mode = 2
+
+[node name="StandardMessage3" parent="HBoxContainer/Log/LogScroll/LogMessages" instance=ExtResource("5_1g7uv")]
+layout_mode = 2
+
+[node name="InputArea" type="HBoxContainer" parent="HBoxContainer/Log"]
+layout_mode = 2
+
+[node name="InputField" type="LineEdit" parent="HBoxContainer/Log/InputArea"]
 layout_mode = 2
 size_flags_horizontal = 3
+placeholder_text = " INSERT TEXT"
 
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage/DenInfobox"]
+[node name="SendButton" type="Button" parent="HBoxContainer/Log/InputArea"]
 layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "JEREMY"
-fit_content = true
-vertical_alignment = 1
-
-[node name="MessageText" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "HI I'M JEREMY I SAY THINGS AND STUFF"
-fit_content = true
-vertical_alignment = 1
-
-[node name="LogMessage2" type="VBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages"]
-layout_mode = 2
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage2/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage2/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "JEREMY"
-fit_content = true
-vertical_alignment = 1
-
-[node name="MessageText" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "HI I'M JEREMY I SAY THINGS AND STUFF"
-fit_content = true
-vertical_alignment = 1
-
-[node name="LogMessage3" type="VBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages"]
-layout_mode = 2
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage3/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage3/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "JEREMY"
-fit_content = true
-vertical_alignment = 1
-
-[node name="MessageText" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage3"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "HI I'M JEREMY I SAY THINGS AND STUFF"
-fit_content = true
-vertical_alignment = 1
-
-[node name="LogMessage4" type="VBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages"]
-layout_mode = 2
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage4"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage4/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage4/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "JEREMY"
-fit_content = true
-vertical_alignment = 1
-
-[node name="MessageText" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage4"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "HI I'M JEREMY I SAY THINGS AND STUFF"
-fit_content = true
-vertical_alignment = 1
-
-[node name="LogMessage5" type="VBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages"]
-layout_mode = 2
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage5"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage5/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage5/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "JEREMY"
-fit_content = true
-vertical_alignment = 1
-
-[node name="MessageText" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage5"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "HI I'M JEREMY I SAY THINGS AND STUFF"
-fit_content = true
-vertical_alignment = 1
-
-[node name="LogMessage6" type="VBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages"]
-layout_mode = 2
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage6"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage6/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage6/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "JEREMY"
-fit_content = true
-vertical_alignment = 1
-
-[node name="MessageText" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage6"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "HI I'M JEREMY I SAY THINGS AND STUFF"
-fit_content = true
-vertical_alignment = 1
-
-[node name="LogMessage7" type="VBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages"]
-layout_mode = 2
-
-[node name="DenInfobox" type="HBoxContainer" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage7"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DenImage" type="TextureRect" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage7/DenInfobox"]
-layout_mode = 2
-texture = ExtResource("3_xi62n")
-
-[node name="DenName" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage7/DenInfobox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "JEREMY"
-fit_content = true
-vertical_alignment = 1
-
-[node name="MessageText" type="RichTextLabel" parent="HBoxContainer/Log/LogScroll/LogMessages/LogMessage7"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "HI I'M JEREMY I SAY THINGS AND STUFF"
-fit_content = true
-vertical_alignment = 1
+icon = ExtResource("4_2wgue")

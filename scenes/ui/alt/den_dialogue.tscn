@@ -1,29 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqnvemmhe5ems"]
+[gd_scene load_steps=5 format=3 uid="uid://bqnvemmhe5ems"]
 
-[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="1_0l2dt"]
 [ext_resource type="Script" uid="uid://bys00qdjwlgun" path="res://src/ui/den_dialogue.gd" id="1_m0h8u"]
+[ext_resource type="Theme" uid="uid://8sou88etkpg7" path="res://assets/ui/terminal_ui_theme.tres" id="1_xnik6"]
+[ext_resource type="Texture2D" uid="uid://rqrfturiwqat" path="res://assets/debug/plhold_denizen_icon.png" id="2_m0h8u"]
+[ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="4_0c0fc"]
 
-[node name="DenDialogue" type="VBoxContainer"]
+[node name="DenDialogue" type="MarginContainer"]
+offset_right = 347.0
+offset_bottom = 125.0
+theme = ExtResource("1_xnik6")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 script = ExtResource("1_m0h8u")
 
-[node name="DenInfobox" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LogSeparator" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"LogSeparator"
+
+[node name="DenInfobox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DenImage" type="TextureRect" parent="DenInfobox"]
+[node name="DenImage" type="TextureRect" parent="VBoxContainer/DenInfobox"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-texture = ExtResource("1_0l2dt")
+texture = ExtResource("2_m0h8u")
+expand_mode = 2
+stretch_mode = 4
 
-[node name="DenName" type="RichTextLabel" parent="DenInfobox"]
+[node name="DenName" type="RichTextLabel" parent="VBoxContainer/DenInfobox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "JEREMY"
 fit_content = true
 vertical_alignment = 1
 
-[node name="MessageText" type="RichTextLabel" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+
+[node name="MessageText" type="RichTextLabel" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "HI I'M JEREMY I SAY THINGS AND STUFF"
 fit_content = true
 vertical_alignment = 1
+
+[node name="ContextMenuComponent" parent="." instance=ExtResource("4_0c0fc")]
+layout_mode = 2
