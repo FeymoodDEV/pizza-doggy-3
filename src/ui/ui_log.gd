@@ -1,5 +1,4 @@
 extends VBoxContainer
-class_name UiLog
 
 @export var LIMIT_MESSAGE_COUNT : bool = true
 @export var MAX_MESSAGE_COUNT := 250

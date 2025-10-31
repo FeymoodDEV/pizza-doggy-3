@@ -17,7 +17,7 @@ enum Mood {
 
 @onready var base_den_controller: DenController = $BaseDenController
 
-var name_list = [
+static var name_list = [
 	"Fred",
 	"Barry",
 	"Sally",

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://x48k1kbnayiq"]
 
-[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="1_tri4d"]
+[ext_resource type="Texture2D" uid="uid://bv6x3qbpeoij8" path="res://assets/debug/plhold_server_icon.png" id="1_cm8xn"]
 [ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="2_cm8xn"]
 
 [node name="ServerCard" type="MarginContainer"]
@@ -15,7 +15,7 @@ layout_mode = 2
 
 [node name="ServerIcon" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_tri4d")
+texture = ExtResource("1_cm8xn")
 stretch_mode = 5
 
 [node name="ServerTextboxes" type="VBoxContainer" parent="HBoxContainer"]

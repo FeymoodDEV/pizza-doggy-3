@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://hulqp3iqhd7a"]
+[gd_scene load_steps=4 format=3 uid="uid://hulqp3iqhd7a"]
 
+[ext_resource type="Script" uid="uid://b7x3426rlfsfk" path="res://scenes/ui/alt/den_card.gd" id="1_o7ulf"]
 [ext_resource type="Texture2D" uid="uid://rqrfturiwqat" path="res://assets/debug/plhold_denizen_icon.png" id="1_q7os8"]
 [ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="2_82i1n"]
 
@@ -10,6 +11,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_o7ulf")
 
 [node name="DenInfobox" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
@@ -34,7 +36,7 @@ bbcode_enabled = true
 text = "JEREMY"
 horizontal_alignment = 3
 
-[node name="DenName2" type="RichTextLabel" parent="DenInfobox/VBoxContainer"]
+[node name="DenLocation" type="RichTextLabel" parent="DenInfobox/VBoxContainer"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 3

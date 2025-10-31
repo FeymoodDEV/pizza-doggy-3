@@ -16,12 +16,16 @@ var alive : bool = true
 ## If true, denizens cannot move in or out of this server
 var closed : bool = false
 
-var server_locations: Array = [
+static var server_locations: Array = [
 	"Fountain",
 	"Hotel",
 	"Grocery Store",
 	"Garbage Dump",
-	"The Office"
+	"Office",
+	"Plaza",
+	"Coffee Shop",
+	"Factory",
+	"Theatre"
 ]
 
 ## The server's name.

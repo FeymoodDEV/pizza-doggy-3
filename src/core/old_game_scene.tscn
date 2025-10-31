@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b01hcrslrsskk"]
+[gd_scene load_steps=12 format=3 uid="uid://drjg3dvrnqqve"]
 
+[ext_resource type="Script" uid="uid://jbwvbc538cmh" path="res://src/core/game_scene.gd" id="1_dprio"]
 [ext_resource type="Script" uid="uid://cd2uipnsy741q" path="res://src/core/game_logic.gd" id="2_3gswn"]
-[ext_resource type="Resource" uid="uid://b6bgipqsvayea" path="res://src/hardware/default_hardware_info.tres" id="2_swera"]
+[ext_resource type="PackedScene" uid="uid://dfxaw6tw4vtwb" path="res://scenes/ui/chat/chat_controller.tscn" id="3_60awy"]
 [ext_resource type="Theme" uid="uid://8sou88etkpg7" path="res://assets/ui/terminal_ui_theme.tres" id="4_qdgm4"]
 [ext_resource type="Script" uid="uid://d4ibqp1vsinrj" path="res://src/ui/ui.gd" id="5_5yvik"]
 [ext_resource type="Texture2D" uid="uid://maag1eoswh7c" path="res://assets/debug/plhold_ui_banner.png" id="5_qdgm4"]
@@ -12,14 +13,17 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1g7uv"]
 
-[node name="GameLogic" type="Node"]
+[node name="GameScene" type="Node"]
+script = ExtResource("1_dprio")
+
+[node name="GameLogic" type="Node" parent="."]
 script = ExtResource("2_3gswn")
-HARDWARE_INFO = ExtResource("2_swera")
+
+[node name="ChatController" parent="." instance=ExtResource("3_60awy")]
 
 [node name="Visual" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="Visual"]
-unique_name_in_owner = true
 material = SubResource("ShaderMaterial_1g7uv")
 layout_mode = 3
 anchor_right = 0.75000006
@@ -81,10 +85,9 @@ grow_vertical = 2
 [node name="TabContainer" type="TabContainer" parent="Visual/UI/MainArea"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 2
+current_tab = 0
 
 [node name="DENIZENS" type="ScrollContainer" parent="Visual/UI/MainArea/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -106,6 +109,7 @@ size_flags_vertical = 3
 script = ExtResource("8_srebf")
 
 [node name="DRONES" type="VBoxContainer" parent="Visual/UI/MainArea/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -118,7 +122,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
 
-[node name="DroneCount" type="RichTextLabel" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "AVAILABLE DRONES: 5"
@@ -126,42 +130,42 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OrderButtons" type="GridContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls"]
+[node name="GridContainer" type="GridContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/OrderButtons"]
+[node name="MarginContainer" type="MarginContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HarvestButton" type="Button" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/OrderButtons/MarginContainer"]
+[node name="Button" type="Button" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/GridContainer/MarginContainer"]
 layout_mode = 2
 text = "HARVEST"
 
-[node name="MarginContainer2" type="MarginContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/OrderButtons"]
+[node name="MarginContainer2" type="MarginContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RepairButton" type="Button" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/OrderButtons/MarginContainer2"]
+[node name="Button" type="Button" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/GridContainer/MarginContainer2"]
 layout_mode = 2
 text = "REPAIR"
 
-[node name="MarginContainer3" type="MarginContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/OrderButtons"]
+[node name="MarginContainer3" type="MarginContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/GridContainer"]
 layout_mode = 2
 
-[node name="SynthesiseButton" type="Button" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/OrderButtons/MarginContainer3"]
+[node name="Button" type="Button" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/GridContainer/MarginContainer3"]
 layout_mode = 2
 text = "SYNTHETISE"
 
-[node name="MarginContainer4" type="MarginContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/OrderButtons"]
+[node name="MarginContainer4" type="MarginContainer" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/GridContainer"]
 layout_mode = 2
 
-[node name="UpgradeButton" type="Button" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/OrderButtons/MarginContainer4"]
+[node name="Button" type="Button" parent="Visual/UI/MainArea/TabContainer/DRONES/DroneControls/GridContainer/MarginContainer4"]
 layout_mode = 2
 text = "UPGRADE"
 
-[node name="Separator" type="Panel" parent="Visual/UI/MainArea/TabContainer/DRONES"]
+[node name="Panel" type="Panel" parent="Visual/UI/MainArea/TabContainer/DRONES"]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
 theme_type_variation = &"LogSeparator"
@@ -176,35 +180,35 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextLog" type="VBoxContainer" parent="Visual/UI/MainArea"]
+[node name="Log" type="VBoxContainer" parent="Visual/UI/MainArea"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.35
 script = ExtResource("6_qdgm4")
 
-[node name="LogScroll" type="ScrollContainer" parent="Visual/UI/MainArea/TextLog"]
+[node name="LogScroll" type="ScrollContainer" parent="Visual/UI/MainArea/Log"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
 vertical_scroll_mode = 2
 
-[node name="LogMessages" type="VBoxContainer" parent="Visual/UI/MainArea/TextLog/LogScroll"]
+[node name="LogMessages" type="VBoxContainer" parent="Visual/UI/MainArea/Log/LogScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
 
-[node name="InputArea" type="HBoxContainer" parent="Visual/UI/MainArea/TextLog"]
+[node name="InputArea" type="HBoxContainer" parent="Visual/UI/MainArea/Log"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="InputField" type="LineEdit" parent="Visual/UI/MainArea/TextLog/InputArea"]
+[node name="InputField" type="LineEdit" parent="Visual/UI/MainArea/Log/InputArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = " INSERT TEXT"
 
-[node name="SendButton" type="Button" parent="Visual/UI/MainArea/TextLog/InputArea"]
+[node name="SendButton" type="Button" parent="Visual/UI/MainArea/Log/InputArea"]
 layout_mode = 2
 icon = ExtResource("6_v6ig2")

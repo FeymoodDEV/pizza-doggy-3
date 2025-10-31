@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs4g2sfswgycw"]
+[gd_scene load_steps=4 format=3 uid="uid://cs4g2sfswgycw"]
 
-[ext_resource type="Texture2D" uid="uid://mgi6yw1hxwso" path="res://icon.png" id="1_gjfe2"]
+[ext_resource type="Texture2D" uid="uid://3kd8q7xg7v8y" path="res://assets/debug/plhold_drone_icon.png" id="1_ew08v"]
+[ext_resource type="Script" uid="uid://ctw45vhmupnj4" path="res://scenes/ui/alt/task_card.gd" id="1_sxehf"]
 [ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="2_ew08v"]
 
 [node name="TaskCard" type="MarginContainer"]
@@ -8,6 +9,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_sxehf")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
@@ -15,7 +17,7 @@ layout_mode = 2
 
 [node name="DroneIcon" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_gjfe2")
+texture = ExtResource("1_ew08v")
 stretch_mode = 5
 
 [node name="TaskBoxes" type="VBoxContainer" parent="HBoxContainer"]
