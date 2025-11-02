@@ -3,6 +3,7 @@ class_name GameLogic
 
 const DENIZEN = preload("uid://rccmoiibmewl")
 
+@onready var ui: Control = %UI
 
 ## Number of drones the player starts with
 @export var INITIAL_DRONE_COUNT : int = 2
@@ -14,9 +15,9 @@ const DENIZEN = preload("uid://rccmoiibmewl")
 @export var START_DENIZEN_COUNT : int = 20
 
 ## References to all servers
-var servers: Array[Node]
+var servers: Array[Server]
 ## References to all denizens
-var denizens: Array[Node]
+var denizens: Array[Denizen]
 ## Available drone count
 var drones : int
 ## Current resource counts
@@ -32,14 +33,13 @@ func _ready() -> void:
 	# initialize resource counts
 	for i in HARDWARE_INFO.resources.keys():
 		current_resources[i] = 0
-
-	# We need to:
-	# - Create initial servers. Keep track of em
-	# - Create initial denizens and parent them to those servers. Keep track of em
-	# - Connect relevant signals
-	# - and do whatever else might be relevant at the start of the game.
+	
+	# Initials entities
 	#setup_with_predefined()
 	setup_with_random()
+	
+	# Setup ui cards and signals; see ui.gd
+	ui.setup(servers)
 
 ## Generate new Servers and Denizens and perform setup operations.
 func setup_with_random() -> void:
@@ -87,7 +87,7 @@ func setup_with_predefined() -> void:
 				denizens.append(c)
 #endregion
 
-#region Denizen requests
+#region Denizen base AI requests
 func _on_requesting_random_interaction(emitter: Denizen) -> void:
 	var server = emitter.get_parent() # TODO: do better
 	
@@ -101,6 +101,8 @@ func _on_requesting_random_interaction(emitter: Denizen) -> void:
 	var selected_denizen : Denizen = available_denizens.pick_random()
 	
 	selected_denizen.accept_interaction(emitter)
+	selected_denizen.status_changed.emit()
+	emitter.status_changed.emit()
 
 func _on_requesting_random_move(emitter: Denizen) -> void:
 	var target_server = servers.pick_random()
@@ -109,11 +111,12 @@ func _on_requesting_random_move(emitter: Denizen) -> void:
 		target_server = servers.pick_random()
 	
 	if target_server.closed:
-		print("Server %s refused move request from %s due to being closed" % [target_server, emitter])
+		SignalBus.standard_message.emit("Server %s refused move request from %s due to being closed." % [target_server, emitter])
 		# "[x] is annoyed/feeling claustrophobic..."
 	else:
-		print("%s moving to %s" % [emitter.denizen_name, target_server.server_name])
+		SignalBus.standard_message.emit("%s has entered %s." % [emitter.denizen_name, target_server.server_name])
 		emitter.reparent(target_server)
+		emitter.status_changed.emit()
 #endregion
 
 #region Drones

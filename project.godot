@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pizza Doggy 3"
-run/main_scene="uid://bhly82jesq508"
+run/main_scene="uid://b01hcrslrsskk"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://mgi6yw1hxwso"
 

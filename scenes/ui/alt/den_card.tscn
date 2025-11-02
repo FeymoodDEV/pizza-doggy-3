@@ -18,7 +18,8 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DenImage" type="TextureRect" parent="DenInfobox"]
+[node name="DenIcon" type="TextureRect" parent="DenInfobox"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_q7os8")
 
@@ -28,6 +29,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
 [node name="DenName" type="RichTextLabel" parent="DenInfobox/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -37,6 +39,7 @@ text = "JEREMY"
 horizontal_alignment = 3
 
 [node name="DenLocation" type="RichTextLabel" parent="DenInfobox/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -46,3 +49,17 @@ horizontal_alignment = 3
 
 [node name="ContextMenuComponent" parent="." instance=ExtResource("2_82i1n")]
 layout_mode = 2
+
+[node name="Chat" type="Button" parent="ContextMenuComponent/ContextMenu/MarginContainer/Options" index="0"]
+layout_mode = 2
+text = "Chat"
+
+[node name="MoveTo" type="Button" parent="ContextMenuComponent/ContextMenu/MarginContainer/Options" index="1"]
+layout_mode = 2
+text = "Move to..."
+
+[node name="Delete" type="Button" parent="ContextMenuComponent/ContextMenu/MarginContainer/Options" index="2"]
+layout_mode = 2
+text = "Delete"
+
+[editable path="ContextMenuComponent"]

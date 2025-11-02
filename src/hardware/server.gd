@@ -3,6 +3,7 @@ class_name Server
 # Should locations and servers be the same class?
 # Probably, right?
 
+signal status_changed
 signal broken_down
 
 const MAX_INTEGRITY : float = 500.0
@@ -12,9 +13,15 @@ const ANOMALY_WEAR_RATE_BONUS : float = 10.0
 const START_INTEGRITY_VARIATION_MAX : float = 75.0
 
 ## If true, the server is up and running.
-var alive : bool = true
+var alive : bool = true :
+	set(x):
+		alive = x
+		status_changed.emit()
 ## If true, denizens cannot move in or out of this server
-var closed : bool = false
+var closed : bool = false :
+	set(x):
+		closed = x
+		status_changed.emit()
 
 static var server_locations: Array = [
 	"Fountain",
@@ -31,7 +38,10 @@ static var server_locations: Array = [
 ## The server's name.
 var server_name: String
 ## The server's 'health'; goes does as it wears down.
-var integrity: float
+var integrity: float : 
+	set(x):
+		integrity = x
+		status_changed.emit()
 
 #var server_max_occupants: int
 
@@ -44,8 +54,9 @@ func _physics_process(delta: float) -> void:
 		if integrity <= 0.0:
 			alive = false
 			broken_down.emit()
+			SignalBus.standard_message.emit("Server %s has broken down" % server_name)
 		else: 
-			integrity -= get_wear_rate()
+			integrity -= get_wear_rate() * delta
 	
 
 func get_wear_rate() -> float :

@@ -16,6 +16,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="DroneIcon" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_ew08v")
 stretch_mode = 5
@@ -25,15 +26,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TaskTitle" type="RichTextLabel" parent="HBoxContainer/TaskBoxes"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "HARVEST: HAFNIUM"
 fit_content = true
 
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/TaskBoxes"]
+unique_name_in_owner = true
 layout_mode = 2
 value = 66.89
 
-[node name="ServerInfo" type="RichTextLabel" parent="HBoxContainer/TaskBoxes"]
+[node name="TaskInfo" type="RichTextLabel" parent="HBoxContainer/TaskBoxes"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ETA: -0:27
 + HAFNIUM X5"
@@ -41,3 +45,9 @@ fit_content = true
 
 [node name="ContextMenuComponent" parent="." instance=ExtResource("2_ew08v")]
 layout_mode = 2
+
+[node name="Cancel" type="Button" parent="ContextMenuComponent/ContextMenu/MarginContainer/Options" index="0"]
+layout_mode = 2
+text = "Cancel"
+
+[editable path="ContextMenuComponent"]

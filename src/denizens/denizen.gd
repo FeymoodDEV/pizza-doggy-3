@@ -5,6 +5,7 @@ class_name Denizen
 # I'm not sure what type to extend this from right now; I think it'll need to be serializable, so
 # I picked Node but Resource could probably work as well
 
+signal status_changed # used for ui
 signal requesting_random_move
 signal requesting_random_interaction
 
@@ -50,7 +51,7 @@ var denizen_name : String
 ## The name of the denizen. Randomly generated
 var memory : Array = []
 ## Record of recent notable events the denizen was a witness to
-var status : Mood
+var mood : Mood
 
 func _ready() -> void:
 	SignalBus.purge_denizen.connect(on_purge_denizen_button_pressed)
@@ -63,7 +64,7 @@ func generate_name():
 	denizen_name = name_list[rand_index]
 
 func start_chat_response() -> String:
-	match status:
+	match mood:
 		Mood.NORMAL:
 			return "I am having a good time."
 		Mood.DISTURBED:
@@ -73,7 +74,7 @@ func start_chat_response() -> String:
 
 func describe_mood() -> String:
 	var mood: String
-	match status:
+	match mood:
 		Mood.NORMAL:
 			mood = "Calm."
 		Mood.DISTURBED:
@@ -97,8 +98,7 @@ func delete(denizen):
 
 ## Interact with a denizen.
 func accept_interaction(denizen: Denizen):
-	print("%s is interacting with %s" % [denizen.denizen_name, self.denizen_name])
-	pass
+	SignalBus.standard_message.emit("%s is interacting with %s" % [denizen.denizen_name, self.denizen_name])
 
 ## Returns true if the denizen is available for interaction with other denizens.
 ## Anomalies could be made to affect this

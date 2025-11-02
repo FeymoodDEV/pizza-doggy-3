@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b01hcrslrsskk"]
+[gd_scene load_steps=12 format=3 uid="uid://b01hcrslrsskk"]
 
 [ext_resource type="Script" uid="uid://cd2uipnsy741q" path="res://src/core/game_logic.gd" id="2_3gswn"]
 [ext_resource type="Resource" uid="uid://b6bgipqsvayea" path="res://src/hardware/default_hardware_info.tres" id="2_swera"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dda4l13njy616" path="res://src/ui/ui_log.gd" id="6_qdgm4"]
 [ext_resource type="Texture2D" uid="uid://wevnxi5q8k3e" path="res://assets/ui/icon_send.png" id="6_v6ig2"]
 [ext_resource type="Script" uid="uid://dp5x7ww5fd3bn" path="res://src/ui/denizen_overview.gd" id="7_qlkc0"]
+[ext_resource type="Script" uid="uid://cs7u30l2rkig4" path="res://src/core/task_overview.gd" id="8_5yvik"]
 [ext_resource type="Script" uid="uid://blrewnhmx80xx" path="res://src/ui/server_overview.gd" id="8_srebf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1g7uv"]
@@ -81,10 +82,9 @@ grow_vertical = 2
 [node name="TabContainer" type="TabContainer" parent="Visual/UI/MainArea"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 2
+current_tab = 0
 
 [node name="DENIZENS" type="ScrollContainer" parent="Visual/UI/MainArea/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -106,6 +106,7 @@ size_flags_vertical = 3
 script = ExtResource("8_srebf")
 
 [node name="DRONES" type="VBoxContainer" parent="Visual/UI/MainArea/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -175,6 +176,7 @@ metadata/_tab_index = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("8_5yvik")
 
 [node name="TextLog" type="VBoxContainer" parent="Visual/UI/MainArea"]
 unique_name_in_owner = true

@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://x48k1kbnayiq"]
+[gd_scene load_steps=4 format=3 uid="uid://x48k1kbnayiq"]
 
+[ext_resource type="Script" uid="uid://dl64lasdc4734" path="res://scenes/ui/alt/server_card.gd" id="1_32v7c"]
 [ext_resource type="Texture2D" uid="uid://bv6x3qbpeoij8" path="res://assets/debug/plhold_server_icon.png" id="1_cm8xn"]
 [ext_resource type="PackedScene" uid="uid://dy2paf4xw0cln" path="res://src/ui/context_menu_component.tscn" id="2_cm8xn"]
 
@@ -8,12 +9,14 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_32v7c")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="ServerIcon" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_cm8xn")
 stretch_mode = 5
@@ -23,11 +26,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ServerName" type="RichTextLabel" parent="HBoxContainer/ServerTextboxes"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "PLAZA"
 fit_content = true
 
 [node name="ServerInfo" type="RichTextLabel" parent="HBoxContainer/ServerTextboxes"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "87.5% INTEGRITY
 * RAM: DDR98
@@ -37,3 +42,17 @@ fit_content = true
 
 [node name="ContextMenuComponent" parent="." instance=ExtResource("2_cm8xn")]
 layout_mode = 2
+
+[node name="Repair" type="Button" parent="ContextMenuComponent/ContextMenu/MarginContainer/Options" index="0"]
+layout_mode = 2
+text = "Repair"
+
+[node name="Lock" type="Button" parent="ContextMenuComponent/ContextMenu/MarginContainer/Options" index="1"]
+layout_mode = 2
+text = "Lock"
+
+[node name="Purge" type="Button" parent="ContextMenuComponent/ContextMenu/MarginContainer/Options" index="2"]
+layout_mode = 2
+text = "Purge"
+
+[editable path="ContextMenuComponent"]
